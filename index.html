@@ -16,12 +16,12 @@
     
     <body>
         <canvas align=center id='canvas' dir="rtl" width='384'  height='900'>Canvas not supported</canvas>
-        <img id="barcode" style="display: none;"/>
+<img id="barcode" style="display: none;"/>
         <script type="text/javascript" charset="utf-8" src='./js/JsBarcode.all.min.js'></script>
         
     <p align="center">
         <button id="print_data" class="buttons">PRINT</button>
-    </p>    
+</p>    
 
 
     <script type="text/javascript" charset="utf-8">
@@ -73,30 +73,22 @@
             drawText({string:": WARNINGS"}),        drawText({string:"", align:"center"}), startY+= linespace;
            
             drawText({string:"----------------------------------------------------------------------",align:"center"}), startY+= linespace;
-            drawText({string:": COMMENTS"}),          drawText({string:" vgavsdabshfbashdbajdbasdbajhdbajdbajdbajhfbasjdbajdbajdbasjdbadbasjdbadbasdbasdbjadbasdbhadbjasdb ", align:"right"}), startY+= linespace;
-           
-           
-
+            drawText({string:": COMMENTS"}),          drawText({string:" :se recomienda ", align:"center"}), startY+= linespace;
+            drawText({string:":1"}),drawText({string:"", align:"center"}),startY+= linespace;
+            drawText({string:":2"}),drawText({string:"", align:"center"}),startY+= linespace;
+            drawText({string:":3"}),drawText({string:"", align:"center"}),startY+= linespace;
+            drawText({string:":4"}),drawText({string:"", align:"center"}),startY+= linespace;
+            drawText({string:":5"}),drawText({string:"", align:"center"}),startY+= linespace;
             var logo2 = new Image();
         logo2.src = './img/QR.bmp';
         logo2.onload = function() {
-            context.drawImage(logo2, (canvas.width - logo2.width)/2, startY, logo2.width, logo2.height), startY+= logo2.height - 20;
+            context.drawImage(logo2, (canvas.width - logo2.width)/2, startY, logo2.width, logo2.height), startY+= logo2.height + 80;
         }
-           // var barcodeWidth = 300;
-           // var barcodeHeight = 100;
-            var image = document.getElementById('barcode');
-            JsBarcode("#barcode","9780199532179", {format:"EAN13", fontSize:10, width:barcodeWidth, height:barcodeHeight});
-
-            image.onload = function() {
-            context.drawImage(image, (canvas.width - barcodeWidth) /2, startY, barcodeWidth, barcodeHeight);
-            }
+           
+            
         }
     
         function print_sample(){
-    
-            var comm = new WSComm();
-            var encoder = new WSEncoder();
-
             var printableXml = encoder.addCanvas({ctx: context, x: 0, y:0, width:384, height:900, dithering:false});
             comm.send(printableXml);    
         };
