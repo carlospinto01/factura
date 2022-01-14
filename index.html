@@ -82,13 +82,20 @@
             var logo2 = new Image();
         logo2.src = './img/QR.bmp';
         logo2.onload = function() {
-            context.drawImage(logo2, (canvas.width - logo2.width)/2, startY, logo2.width, logo2.height), startY+= logo2.height + 80;
+            context.drawImage(logo2, (canvas.width - logo2.width)/2, startY, logo2.width, logo2.height), startY+= logo2.height + 30;
         }
-           
+           var image = document.getElementById('barcode');
+            JsBarcode("#barcode","9780199532179", {format:"EAN13", fontSize:10, width:barcodeWidth, height:barcodeHeight});
+
+            image.onload = function() {
+            context.drawImage(image, (canvas.width - barcodeWidth) /2, startY, barcodeWidth, barcodeHeight);
+            }
             
         }
     
         function print_sample(){
+            var comm = new WSComm();
+            var encoder = new WSEncoder();
             var printableXml = encoder.addCanvas({ctx: context, x: 0, y:0, width:384, height:900, dithering:false});
             comm.send(printableXml);    
         };
