@@ -74,13 +74,13 @@
            
             drawText({string:"----------------------------------------------------------------------",align:"center"}), startY+= linespace;
             drawText({string:": COMMENTS"}),          drawText({string:" vgavsdabshfbashdbajdbasdbajhdbajdbajdbajhfbasjdbajdbajdbasjdbadbasjdbadbasdbasdbjadbasdbhadbjasdb ", align:"right"}), startY+= linespace;
-            drawText({string:""}),startY+= linespace;
+           
            
 
             var logo2 = new Image();
         logo2.src = './img/QR.bmp';
         logo2.onload = function() {
-            context.drawImage(logo2, (canvas.width - logo2.width)/2, startY, logo2.width, logo2.height), startY+= logo2.height + 30;
+            context.drawImage(logo2, (canvas.width - logo2.width)/2, startY, logo2.width, logo2.height), startY+= logo2.height + 20;
         }
            // var barcodeWidth = 300;
            // var barcodeHeight = 100;
